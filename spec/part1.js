@@ -214,17 +214,6 @@
 
     });
 
-
-    // _.indexOf = function(array, target) {
-    //   var result = -1;
-    //   _.each(array, function(item, index) {
-    //     if (item === target && result === -1) {
-    //       result = index;
-    //     }
-    //   });
-    //   return result;
-    // };
-
     describe('indexOf', function() {
 
       it('should find 40 in the list', function() {
@@ -251,6 +240,10 @@
       });
     });
 
+    // Return all elements of an array that pass a truth test.
+    // _.filter = function(collection, test) {
+    // };
+
     describe('filter', function() {
 
       it('should return all even numbers in an array', function() {
@@ -262,7 +255,7 @@
 
       it('should return all odd numbers in an array', function() {
         var isOdd = function(num) { return num % 2 !== 0; };
-        var odds = FILL_ME_IN;
+        var odds = _.filter([1, 2, 3, 4, 5, 6], isOdd);
 
         expect(odds).to.eql([1, 3, 5]);
       });

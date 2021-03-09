@@ -88,8 +88,25 @@
     return result;
   };
 
+
+  // it('should return all even numbers in an array', function() {
+  //   var isEven = function(num) { return num % 2 === 0; };
+  //   var evens = _.filter([1, 2, 3, 4, 5, 6], isEven);
+
+  //   expect(evens).to.eql([2, 4, 6]);
+  // });
+
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
+    // create empty array variable
+    var results = [];
+    // call _.each on collection
+    _.each(collection, function(val) {
+      if (test(val)) {
+        results.push(val);
+      }
+    });
+    return results;
   };
 
   // Return all elements of an array that don't pass a truth test.
