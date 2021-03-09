@@ -111,12 +111,35 @@
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
-    // TIP: see if you can re-use _.filter() here, without simply
-    // copying code in and modifying it
+    // create empty array variable
+    var results = [];
+    // call _.each on collection
+    _.each(collection, function(val) {
+      if (!test(val)) {
+        results.push(val);
+      }
+    });
+    return results;
   };
 
-  // Produce a duplicate-free version of the array.
+
+
   _.uniq = function(array, isSorted, iterator) {
+    var arr = [];
+    var obj = {};
+    iterator = iterator || _.identity;
+    var arr2 = [];
+    _.each(array, function (val) {
+      arr2.push(iterator (val));
+    });
+    for (var i = 0; i < array.length; i++) {
+      if ( obj[arr2[i]] === undefined ) {
+        arr.push(array[i]);
+        obj[arr2[i]] = 1;
+      }
+    }
+    return arr;
+
   };
 
 
