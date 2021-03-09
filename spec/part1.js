@@ -214,12 +214,23 @@
 
     });
 
+
+    // _.indexOf = function(array, target) {
+    //   var result = -1;
+    //   _.each(array, function(item, index) {
+    //     if (item === target && result === -1) {
+    //       result = index;
+    //     }
+    //   });
+    //   return result;
+    // };
+
     describe('indexOf', function() {
 
       it('should find 40 in the list', function() {
         var numbers = [10, 20, 30, 40, 50];
 
-        expect(_.indexOf(FILL_ME_IN, 40)).to.equal(3);
+        expect(_.indexOf(numbers, 40)).to.equal(3);
       });
 
       it('should be able to compute indexOf even when the native function is undefined', function() {
@@ -229,14 +240,14 @@
       });
 
       it('returns -1 when the target cannot be found not in the list', function() {
-        var numbers = FILL_ME_IN;
+        var numbers = [2348794129483626];
 
         expect(_.indexOf(numbers, 35)).to.equal(-1);
       });
 
       it('returns the first index that the target can be found at when there are multiple matches', function() {
-        var numbers = FILL_ME_IN;
-        expect(FILL_ME_IN).to.equal(1);
+        var numbers = [10, 20, 30, 20];
+        expect(_.indexOf(numbers, 20)).to.equal(1);
       });
     });
 
