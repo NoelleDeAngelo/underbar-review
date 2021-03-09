@@ -123,10 +123,10 @@
         var iterations = [];
 
         _.each(letters, function(letter, index) {
-          iterations.push([letter, index]);
+          iterations.push(index);
         });
 
-        expect(iterations).to.eql(FILL_ME_IN);
+        expect(iterations).to.eql([0, 1, 2]);
       });
 
       it('should iterate over arrays and provide access to the original collection', function() {
@@ -153,7 +153,7 @@
           iterations.push(letter);
         });
 
-        expect(iterations).to.not.include(FILL_ME_IN);
+        expect(iterations).to.not.include(letters.someProperty);
       });
 
       it('should iterate over objects and provide access to each value', function() {
