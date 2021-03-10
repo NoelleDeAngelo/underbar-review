@@ -237,8 +237,17 @@
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
+
+  // it('should pass for a collection of all-truthy results', function() {
+  //   expect(_.some([true, {}, 1], _.identity)).to.be.true;
+  // });
+
   _.some = function(collection, iterator) {
+    iterator = iterator || _.identity;
     // TIP: There's a very clever way to re-use every() here.
+    return !_.every(collection, function(item) {
+      return !iterator(item);
+    });
   };
 
   /**
@@ -259,12 +268,29 @@
   //   }, {
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
+
   _.extend = function(obj) {
+    for (var i = 1; i < arguments.length; i++) {
+      var addedObj = arguments[i];
+      for (var key in addedObj) {
+        obj[key] = addedObj[key];
+      }
+    }
+    return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
+    for (var i = 1; i < arguments.length; i++) {
+      var addedObj = arguments[i];
+      for (var key in addedObj) {
+        if (obj[key] === undefined) {
+          obj[key] = addedObj[key];
+        }
+      }
+    }
+    return obj;
   };
 
 
