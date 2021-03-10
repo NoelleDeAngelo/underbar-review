@@ -199,9 +199,12 @@
       accumulator = collection[0];
       collection = collection.slice(1);
     }
-    for (var i = 0; i < collection.length; i++) {
-      accumulator = iterator(accumulator, collection[i]);
-    }
+    // for (var i = 0; i < collection.length; i++) {
+    //   accumulator = iterator(accumulator, collection[i]);
+    // }
+    _.each(collection, function(value) {
+      accumulator = iterator(accumulator, value);
+    });
     return accumulator;
   };
 
@@ -220,7 +223,16 @@
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
-    // TIP: Try re-using reduce() here.
+
+
+    return !!_.reduce(collection, function(isTrue, item) {
+      iterator = iterator || _.identity;
+      // if (isTrue) {
+      //   return true;
+      // }
+      return isTrue && iterator(item);
+    }, true);
+    // }, true);
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
@@ -228,7 +240,6 @@
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
   };
-
 
   /**
    * OBJECTS
